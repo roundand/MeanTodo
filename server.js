@@ -1,10 +1,11 @@
 // set up ========================
 var express  = require('express');
-var app      = express(); 								// create our app w/ express
-var mongoose = require('mongoose'); 					// mongoose for mongodb
-var morgan = require('morgan'); 			// log requests to the console (express4)
-var bodyParser = require('body-parser'); 	// pull information from HTML POST (express4)
-var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+var app      = express(); 										// create our app w/ express
+var mongoose = require('mongoose'); 							// mongoose for mongodb
+var morgan = require('morgan'); 								// log requests to the console (express4)
+var bodyParser = require('body-parser'); 						// pull information from HTML POST (express4)
+var methodOverride = require('method-override'); 				// simulate DELETE and PUT 
+var port = process.env.PORT | 8080;								// play nice with hosting environment
 
 // configuration =================
 // load the config
@@ -24,5 +25,5 @@ app.use(methodOverride());
 require('./app/routes')(app);
 
 // listen (start app with node server.js) ======================================
-app.listen(process.env.PORT);
-console.log("App listening on port " + process.env.PORT);
+app.listen(port);
+console.log("App listening on port " + port);
