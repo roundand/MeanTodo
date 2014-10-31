@@ -9,6 +9,16 @@ Operational stuff
 
 Some of the other stuff I'm learning, about git, mongodb and linux
 
+AngularJS
+---------
+
+I did the course on http://campus.codeschool.com/courses/shaping-up-with-angular-js/
+
+Twitter Bootstrap
+-----------------
+
+I'm doing the course at https://coders-guide.com/watch.php?v=53
+
 Version Control
 ---------------
 

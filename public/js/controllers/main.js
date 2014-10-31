@@ -2,6 +2,18 @@ angular.module('todoController', [])
 
 	// inject the Todo service factory into our controller
 	.controller('mainController', function($scope, $http, Todos) {
+		
+		$scope.tabs = [
+    { title:'Dynamic Title 1', content:'Dynamic content 1' },
+    { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+  ];
+
+  $scope.alertMe = function() {
+    setTimeout(function() {
+      alert('You\'ve selected the alert tab!');
+    });
+  };
+		
 		$scope.formData = {};
 
 		// GET =====================================================================
@@ -34,8 +46,8 @@ angular.module('todoController', [])
 
 		// DELETE ==================================================================
 		// delete a todo after checking it
-		$scope.deleteTodo = function(id) {
-			Todos.delete(id)
+		$scope.deleteTodo = function(todo) {
+			Todos.delete(todo.id)
 				// if successful creation, call our get function to get all the new todos
 				.success(function(data) {
 					$scope.todos = data; // assign our new list of todos

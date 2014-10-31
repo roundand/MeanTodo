@@ -1,7 +1,7 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchTodo">
+<html ng-app="meanTodo">
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
@@ -11,6 +11,7 @@
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+
 	<style>
 		html 					{ overflow-y:scroll; }
 		body 					{ padding-top:50px; }
@@ -20,9 +21,10 @@
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
 	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="js/services/todos.js"></script> <!-- load our todo service -->
-	<script src="js/core.js"></script>
+	<script src="js/core.js"></script> <!-- load our todo module -->
 
 </head>
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
@@ -40,9 +42,10 @@
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div class="checkbox" ng-repeat="todo in todos">
-					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-					</label>
+					<span>{{todo.done}}</span> 
+					<span>{{todo.text}}</span> 
+					<span>{{todo.doBy}}</span> 
+					<button type="submit" class="btn btn-sm" ng-click="deleteTodo(todo)">Delete</button>
 				</div>
 
 			</div>
@@ -50,21 +53,23 @@
 
 		<!-- FORM TO CREATE TODOS -->
 		<div id="todo-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
+			<div class="text-center">
 				<form>
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+						<input type="checkbox"  class="form-control col-md-3" input-sm ng-model="formData.done"> 
+						<input type="text" class="form-control input-md text-center col-md-3" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+						<input type="date" class="form-control col-md-3" ng-model="formData.doBy">
 					</div>
 
 					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+					<button type="submit" class="btn btn-primary btn-lg col-md-3" ng-click="createTodo()">Add</button>
 				</form>
 			</div>
 		</div>
 
 	</div>
-
+	
 </body>
 </html>

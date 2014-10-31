@@ -1,2 +1,2 @@
 
-angular.module('scotchTodo', ['todoController', 'todoService']);
+angular.module('meanTodo', ['todoController', 'todoService', 'ui.bootstrap']);

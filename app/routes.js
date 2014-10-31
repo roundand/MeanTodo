@@ -18,6 +18,9 @@ module.exports = function(app) {
     		{
     			return res.send(err);
     		}
+    		
+    		// no error - let's log the results to the console
+    		console.log(todos);
     
     		res.json(todos); // return all todos in JSON format
     	});
@@ -31,7 +34,7 @@ module.exports = function(app) {
     	// create a todo, information comes from AJAX request from Angular
     	Todo.create({
     		text : req.body.text,
-    		done : false
+    		done : req.body.done,
     	}, function(err, todo) {
     		if (err)
     		{
